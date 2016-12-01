@@ -4606,9 +4606,9 @@ void multi_do_capture_bonus(const ubyte *buf)
 
 	Players[(int)pnum].flags &= ~(PLAYER_FLAGS_FLAG);  // Clear capture flag
 
-	team_kills[get_team(pnum)] += 5;
-	Players[(int)pnum].net_kills_total += 5;
-	Players[(int)pnum].KillGoalCount+=5;
+	team_kills[get_team(pnum)] += 10;
+	//Players[(int)pnum].net_kills_total += 5;
+	//Players[(int)pnum].KillGoalCount+=5;
 
 	if (Netgame.KillGoal>0)
 	{
