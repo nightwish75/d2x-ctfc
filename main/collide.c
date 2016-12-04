@@ -1832,7 +1832,6 @@ void drop_missile_1_or_4(object *playerobj,int missile_index, ubyte force)
 
 // -- int	Items_destroyed = 0;
 
-
 void drop_player_eggs_remote(object *playerobj, ubyte remote);
 void drop_player_eggs(object *playerobj) {
 	drop_player_eggs_remote(playerobj, 0); 
@@ -1904,22 +1903,22 @@ void drop_player_eggs_remote(object *playerobj, ubyte remote)
 
 		//	Drop quad laser if appropos
 		if (Players[pnum].flags & PLAYER_FLAGS_QUAD_LASERS)
-			//CTFC begin
-					if (Game_mode & GM_CAPTURE) {
-					maybe_drop_net_powerup(POW_QUAD_FIRE);
-					} else
-					call_object_create_egg(playerobj, 1, OBJ_POWERUP, POW_QUAD_FIRE);
-
+				{
+	//CTFC need to figure it out first				
+	//				if (Game_mode & GM_CAPTURE)
+	//					maybe_drop_net_powerup(POW_QUAD_FIRE);
+	//				else
+						call_object_create_egg(playerobj, 1, OBJ_POWERUP, POW_QUAD_FIRE);
+				}		
 		if (Players[pnum].flags & PLAYER_FLAGS_CLOAKED)
-					if (Game_mode & GM_CAPTURE) {
-					maybe_drop_net_powerup(POW_CLOAK);
-					} else
-					call_object_create_egg(playerobj, 1, OBJ_POWERUP, POW_CLOAK);
-
+				{
+	//				if (Game_mode & GM_CAPTURE)
+	//					maybe_drop_net_powerup(POW_CLOAK);
+	//				else
+						call_object_create_egg(playerobj, 1, OBJ_POWERUP, POW_CLOAK);
+				}
 		if (Players[pnum].flags & PLAYER_FLAGS_MAP_ALL)
-					if (Game_mode & GM_CAPTURE) {
-					maybe_drop_net_powerup(POW_FULL_MAP);
-					} else
+	
 			        call_object_create_egg(playerobj, 1, OBJ_POWERUP, POW_FULL_MAP);
 
 		if (Players[pnum].flags & PLAYER_FLAGS_AFTERBURNER) {
@@ -1928,28 +1927,20 @@ void drop_player_eggs_remote(object *playerobj, ubyte remote)
 				// Drop nothing
 			} else 
 #endif			
-					if (Game_mode & GM_CAPTURE) {
-					maybe_drop_net_powerup(POW_AFTERBURNER);
-					} else
+	
 					call_object_create_egg(playerobj, 1, OBJ_POWERUP, POW_AFTERBURNER);
 		}
 
 		if (Players[pnum].flags & PLAYER_FLAGS_AMMO_RACK)
-					if (Game_mode & GM_CAPTURE) {
-					maybe_drop_net_powerup(POW_AMMO_RACK);
-					} else
+	
 					call_object_create_egg(playerobj, 1, OBJ_POWERUP, POW_AMMO_RACK);
 
 		if (Players[pnum].flags & PLAYER_FLAGS_CONVERTER)
-					if (Game_mode & GM_CAPTURE) {
-					maybe_drop_net_powerup(POW_CONVERTER);
-					} else
+	
 					call_object_create_egg(playerobj, 1, OBJ_POWERUP, POW_CONVERTER);
 
 		if (Players[pnum].flags & PLAYER_FLAGS_HEADLIGHT)
-					if (Game_mode & GM_CAPTURE) {
-					maybe_drop_net_powerup(POW_HEADLIGHT);
-					} else
+	
 					call_object_create_egg(playerobj, 1, OBJ_POWERUP, POW_HEADLIGHT);
 
 		// drop the other enemies flag if you have it
@@ -1986,55 +1977,36 @@ void drop_player_eggs_remote(object *playerobj, ubyte remote)
 			vulcan_ammo /= 2;		//if both vulcan & gauss, each gets half
 		if (vulcan_ammo < VULCAN_AMMO_AMOUNT)
 			vulcan_ammo = VULCAN_AMMO_AMOUNT;	//make sure gun has at least as much as a powerup
-		//CTFC Begin
-			if (Game_mode & GM_CAPTURE) {
-				maybe_drop_net_powerup(POW_VULCAN_WEAPON);
-			} else
-			{
+
+
+
 				objnum = maybe_drop_primary_weapon_egg(playerobj, VULCAN_INDEX);
 				if (objnum!=-1)
 					Objects[objnum].ctype.powerup_info.count = vulcan_ammo;
-			}
-			if (Game_mode & GM_CAPTURE) {
-				maybe_drop_net_powerup(POW_GAUSS_WEAPON);
-			} else
-			{
+
+
 				objnum = maybe_drop_primary_weapon_egg(playerobj, GAUSS_INDEX);
 				if (objnum!=-1)
 					Objects[objnum].ctype.powerup_info.count = vulcan_ammo;
-			}
-			//CTFC End
+
+
 		//	Drop the rest of the primary weapons
-					//CTFC Begin
-					if ((Game_mode & GM_CAPTURE) && (Players[pnum].primary_weapon_flags & HAS_FLAG(SPREADFIRE_INDEX)))
-					maybe_drop_net_powerup(POW_SPREADFIRE_WEAPON);
-					else
+
+
 					maybe_drop_primary_weapon_egg(playerobj, SPREADFIRE_INDEX);
-					if ((Game_mode & GM_CAPTURE) && (Players[pnum].primary_weapon_flags & HAS_FLAG(PLASMA_INDEX)))
-					maybe_drop_net_powerup(POW_PLASMA_WEAPON);
-					else	
+
 					maybe_drop_primary_weapon_egg(playerobj, PLASMA_INDEX);
-					if ((Game_mode & GM_CAPTURE) && (Players[pnum].primary_weapon_flags & HAS_FLAG(FUSION_INDEX)))
-					maybe_drop_net_powerup(POW_FUSION_WEAPON);
-					else	
+
 					maybe_drop_primary_weapon_egg(playerobj, FUSION_INDEX);
-					if ((Game_mode & GM_CAPTURE) && (Players[pnum].primary_weapon_flags & HAS_FLAG(HELIX_INDEX)))
-					maybe_drop_net_powerup(POW_HELIX_WEAPON);
-					else
+
 					maybe_drop_primary_weapon_egg(playerobj, HELIX_INDEX);
-					if ((Game_mode & GM_CAPTURE) && (Players[pnum].primary_weapon_flags & HAS_FLAG(PHOENIX_INDEX)))
-					maybe_drop_net_powerup(POW_PHOENIX_WEAPON);
-					else			
+			
 					maybe_drop_primary_weapon_egg(playerobj, PHOENIX_INDEX);
-					if ((Game_mode & GM_CAPTURE) && (Players[pnum].primary_weapon_flags & HAS_FLAG(OMEGA_INDEX)))
-					maybe_drop_net_powerup(POW_OMEGA_WEAPON);
-					else
-					{
+
 					objnum = maybe_drop_primary_weapon_egg(playerobj, OMEGA_INDEX);
 					if (objnum!=-1)
 						Objects[objnum].ctype.powerup_info.count = (playerobj->id==Player_num)?Omega_charge:MAX_OMEGA_CHARGE;
-					}
-					//CTFC End
+
 					
 		//	Drop the secondary weapons
 		//	Note, proximity weapon only comes in packets of 4.  So drop n/2, but a max of 3 (handled inside maybe_drop..)  Make sense?

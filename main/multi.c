@@ -4738,13 +4738,27 @@ void multi_send_got_orb (char pnum)
 void multi_do_got_flag (const ubyte *buf)
 {
 	char pnum=buf[1];
-
+	//CTFC Begin
+	int ctfc_useless=0;
+	//CTFC End
 	if (pnum==Player_num)
 		digi_start_sound_queued (SOUND_HUD_YOU_GOT_FLAG,F1_0*2);
 	else if (get_team(pnum)==TEAM_RED)
+		{
+		//CTFC Begin
+		//here make sure flag isn't there anymore
+		ctfc_useless = remove_flag(goal_blue_cube,POW_FLAG_BLUE);
+		//CTFC End
 		digi_start_sound_queued (SOUND_HUD_RED_GOT_FLAG,F1_0*2);
+		}
 	else
+		{
+		//CTFC Begin
+		//here make sure flag isn't there anymore
+		ctfc_useless = remove_flag(goal_red_cube,POW_FLAG_RED);
+		//CTFC End	
 		digi_start_sound_queued (SOUND_HUD_BLUE_GOT_FLAG,F1_0*2);
+		}	
 	Players[(int)pnum].flags|=PLAYER_FLAGS_FLAG;
 	HUD_init_message(HM_MULTI, "%s picked up a flag!",Players[(int)pnum].callsign);
 }

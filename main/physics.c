@@ -336,7 +336,8 @@ void do_physics_sim(object *obj)
 	physics_info *pi;
 	int orig_segnum = obj->segnum;
 	int bounced=0;
-	fix PhysTime = (FrameTime<F1_0/30?F1_0/30:FrameTime);
+	//not used??
+	//fix PhysTime = (FrameTime<F1_0/30?F1_0/30:FrameTime);
 
 	Assert(obj->movement_type == MT_PHYSICS);
 

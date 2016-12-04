@@ -923,6 +923,7 @@ void special_reset_objects(void)
 }
 
 //CTFC Begin
+//returns 1 if there is
 int is_flag_home(int segnum, int objn)
 {
 	int objnum, count = 0;
@@ -933,7 +934,26 @@ int is_flag_home(int segnum, int objn)
 			return 1;
 	count++;
 	}
+	return 0;
 }
+//ugly hack to fix flags not disappearing for others after being picked up:
+int remove_flag(int segnum,int obj_id)
+{
+	int objnum, count = 0;
+for (objnum=Segments[segnum].objects;objnum!=-1;objnum=Objects[objnum].next)	{
+		if ( count > MAX_OBJECTS)
+			return 2;
+		if ((Objects[objnum].type == OBJ_POWERUP) && (Objects[objnum].id == obj_id))
+			{	
+			obj_delete(objnum);
+			return 1;
+			}
+	count++;
+	}
+	return 0;
+	
+}
+
 //CTFC End
 
 #ifndef NDEBUG

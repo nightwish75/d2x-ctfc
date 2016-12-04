@@ -1754,12 +1754,12 @@ void InitPlayerPosition(int random_flag)
 
 		} while ( (closest_dist<i2f(15*20)) && (trys<MAX_PLAYERS*2) );
 	}
-	else {
+	//else {
 		// If deathmatch and not random, positions were already determined by sync packet
-		reset_player_object();
-		reset_cruise();
-		return;
-	}
+	//	reset_player_object();
+	//	reset_cruise();
+	//	return;
+	//}
 	
 	//CTFC Begin
 	//Spawns red odd spawn points (1,3,5,7) blue even spawn points (0,2,4,6)

@@ -700,9 +700,9 @@ void maybe_drop_net_powerup(int powerup_type)
 
 		Objects[objnum].pos = new_pos;
 		//CTFC begin
-		if (Game_mode && GM_CAPTURE) 
-			if ((powerup_type == POW_GAUSS_WEAPON) || (powerup_type == POW_VULCAN_WEAPON))
-			Objects[objnum].ctype.powerup_info.count = 100;
+//		if (Game_mode && GM_CAPTURE) 
+//			if ((powerup_type == POW_GAUSS_WEAPON) || (powerup_type == POW_VULCAN_WEAPON))
+//			Objects[objnum].ctype.powerup_info.count = 100;
 		//CTFC End
 		vm_vec_zero(&Objects[objnum].mtype.phys_info.velocity);
 		obj_relink(objnum, segnum);
@@ -867,22 +867,24 @@ int drop_powerup(int type, int id, int num, vms_vector *init_vel, vms_vector *po
 					vm_vec_zero(&new_velocity);
 				
 				//CTFC Begin
-				//Send flag to home instead of spew
-				if ((Game_mode & GM_CAPTURE) && ((id == POW_FLAG_BLUE) || (id == POW_FLAG_RED)))
-				{
+				//Send flag to home instead of spew ( todo: and powerups go spawn elsewhere...fat chance
+					if (Game_mode & GM_CAPTURE)
+					{
+						if ((id == POW_FLAG_BLUE) || (id == POW_FLAG_RED))
+						{
 					vm_vec_zero(&new_velocity);
 					if (id == POW_FLAG_BLUE)
 						segnum = goal_blue_cube;
 					else
 						segnum = goal_red_cube;
 						
-					compute_segment_center(&new_pos, &Segments[segnum]);
-											
-				} else
-				{
-				new_pos = *pos;
-				}
-				//CTFC End
+					compute_segment_center(&new_pos, &Segments[segnum]);					
+						} else
+							new_pos = *pos;
+					} else
+						new_pos = *pos;
+			
+					//CTFC End
 				
 //				new_pos.x += (d_rand()-16384)*8;
 //				new_pos.y += (d_rand()-16384)*8;

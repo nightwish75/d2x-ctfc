@@ -38,6 +38,7 @@ typedef struct expl_wall {
 //these will hold segment id containing flag homes
 extern int goal_red_cube;
 extern int goal_blue_cube;
+int choose_drop_segment();
 //CTFC End
 
 

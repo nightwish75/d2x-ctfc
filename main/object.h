@@ -416,6 +416,7 @@ extern int Player_fired_laser_this_frame;
  */
  //CTFC Begin
 int is_flag_home(int segnum, int objn);
+int remove_flag(int segnum,int obj_id);
 extern int goal_blue_cube;
 extern int goal_red_cube;
 //CTFC End

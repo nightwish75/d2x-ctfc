@@ -60,7 +60,7 @@ extern int multi_protocol; // set and determinate used protocol
 #define MULTI_PROTO_UDP 1 // UDP protocol
 
 // What version of the multiplayer protocol is this? Increment each time something drastic changes in Multiplayer without the version number changes. Can be reset to 0 each time the version of the game changes
-#define MULTI_PROTO_VERSION 4000 // CTFCp2p v1.0 
+#define MULTI_PROTO_VERSION 4001 // CTFCp2p v1.01
 
 // PROTOCOL VARIABLES AND DEFINES - END
 
@@ -308,6 +308,10 @@ void multi_object_to_object_rw(object *obj, object_rw *obj_rw);
 void multi_object_rw_to_object(object_rw *obj_rw, object *obj);
 //CTFC Begin
 void multi_flag_returned(int pnum);
+extern int is_flag_home(int segnum, int objn);
+extern int remove_flag(int segnum,int obj_id);
+extern int goal_blue_cube;
+extern int goal_red_cube;
 //CTFC End
 
 // Exported variables

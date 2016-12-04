@@ -397,7 +397,7 @@ class DXXProgram(DXXCommon):
 
 class D2XProgram(DXXProgram):
 	PROGRAM_NAME = 'D2X-Rebirth'
-	target = 'd2x-ctfc-'
+	target = 'd2x-rebirth'
 	srcdir = ''
 	ARGUMENTS = argumentIndirection('d2x')
 	def prepare_environment(self):
