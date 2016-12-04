@@ -274,6 +274,7 @@ int objnum_remote_to_local(int remote_objnum, int owner)
 		return(-1);
 	}
 
+
 	return(result);
 }
 
