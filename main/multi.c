@@ -753,7 +753,11 @@ void multi_compute_kill(int killer, int killed)
 				}
 				else
 				{
-					team_kills[get_team(killer_pnum)] += 1;
+					if (Game_mode & GM_CAPTURE)
+						//no team point in ctfc you cant just camp and kill
+						team_kills[get_team(killer_pnum)] += 0;
+						else
+						team_kills[get_team(killer_pnum)] += 1;
 					Players[killer_pnum].net_kills_total += 1;
 					Players[killer_pnum].KillGoalCount +=1;
 					Netgame.TeamKillGoalCount[get_team(killer_pnum)] += 1; 
