@@ -73,6 +73,7 @@ fix repaircen_give_shields(segment *segp, fix MaxAmountCanTake );
 // Call once per frame.
 void fuelcen_update_all();
 
+
 // Called when hit by laser.
 void fuelcen_damage(segment *segp, fix AmountOfDamage );
 
