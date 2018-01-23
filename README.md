@@ -15,3 +15,4 @@ Plans:
 'Defense' - killing opponent who has the flag 5pts (instead of just 1 for regular kill)
 'Capture' - Capturing the flag 10pts
 - Remove 'Preview' spawn, disable observer mode (when/if switching to newer retro code) for CTF - no peeping (for more competitive play)
+- Move to official release Dxx-Rebith unification codebase 
