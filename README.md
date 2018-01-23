@@ -14,3 +14,4 @@ Plans:
 - Provide additional individual score increase for:
 'Defense' - killing opponent who has the flag 5pts (instead of just 1 for regular kill)
 'Capture' - Capturing the flag 10pts
+- Remove 'Preview' spawn, disable observer mode for CTF - no peeping (for more competitive play)
