@@ -4,6 +4,7 @@
 - Flag returning automatically when carrier dies.
 - Team score increase only when capture (prevent defense camping for points)
 - Individual score increase when killed opponent or decrease when teamkill or suicide.
+- Level design player starting positions compatible with jinxes CCTF
 
 Issues:
 - Make primaries spawn in the level instead of spew (spew clouds in one spot - one home - are a problem) - all other games fix this by fixed weapon respawn spots - D2 doesn't have that.
